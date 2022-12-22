@@ -16,17 +16,7 @@ def setup_driver():
 
     options = Options()
     options.headless = True
-    try:
-        driver = webdriver.Firefox(
-            executable_path=GeckoDriverManager(), options=options
-        )
-    except Exception as e:
-        # logging.exception(e)
-        # logging.info("Installing geckodriver")
-        driver = webdriver.Firefox(
-            executable_path=GeckoDriverManager().install(), options=options
-        )
-    return driver
+    return webdriver.Firefox(options=options)
 
 
 def parse_urls(channel_url: str, driver) -> List[str]:
