@@ -1,0 +1,89 @@
+1671718491745	geckodriver	INFO	Listening on 127.0.0.1:58795
+1671718492150	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "58796" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3m/rx3d7q5d0nbdsfzq7tmpgznw0000gn/T/rust_mozprofileq6NXSv"
+*** You are running in headless mode.
+2022-12-22 15:15:05.132 plugin-container[17153:426196] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:15:05.132 plugin-container[17153:426196] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1671718505133	Marionette	INFO	Marionette enabled
+1671718505169	Marionette	INFO	Listening on port 58815
+Read port: 58815
+2022-12-22 15:15:05.225 plugin-container[17153:426196] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:15:05.225 plugin-container[17153:426196] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 15:15:05.225 plugin-container[17153:426255] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:15:05.225 plugin-container[17153:426255] nil host used in call to allowsAnyHTTPSCertificateForHost:
+WebDriver BiDi listening on ws://127.0.0.1:58796
+1671718505444	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3m/rx3d7q5d0nbdsfzq7tmpgznw0000gn/T/rust_mozprofileq6NXSv/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58796/devtools/browser/4f890961-5fd6-42b3-b92d-89ab5c1806d1
+1671718549020	geckodriver	INFO	Listening on 127.0.0.1:58866
+1671718549537	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "58867" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3m/rx3d7q5d0nbdsfzq7tmpgznw0000gn/T/rust_mozprofilenw0XOt"
+*** You are running in headless mode.
+2022-12-22 15:15:49.866 plugin-container[17188:426867] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:15:49.867 plugin-container[17188:426867] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 15:15:49.870 plugin-container[17188:426867] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:15:49.870 plugin-container[17188:426867] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 15:15:49.870 plugin-container[17188:426869] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:15:49.870 plugin-container[17188:426869] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1671718549883	Marionette	INFO	Marionette enabled
+1671718549927	Marionette	INFO	Listening on port 58873
+Read port: 58873
+WebDriver BiDi listening on ws://127.0.0.1:58867
+1671718550078	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3m/rx3d7q5d0nbdsfzq7tmpgznw0000gn/T/rust_mozprofilenw0XOt/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58867/devtools/browser/44acdccd-7820-4166-bf11-fc00c7df8786
+1671718614898	geckodriver	INFO	Listening on 127.0.0.1:58953
+1671718615426	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-headless" "--remote-debugging-port" "58954" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3m/rx3d7q5d0nbdsfzq7tmpgznw0000gn/T/rust_mozprofile2ODKLJ"
+*** You are running in headless mode.
+2022-12-22 15:16:55.778 plugin-container[17257:427640] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:16:55.778 plugin-container[17257:427640] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 15:16:55.781 plugin-container[17257:427640] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:16:55.781 plugin-container[17257:427640] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 15:16:55.782 plugin-container[17257:427638] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 15:16:55.782 plugin-container[17257:427638] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1671718615797	Marionette	INFO	Marionette enabled
+1671718615843	Marionette	INFO	Listening on port 58959
+Read port: 58959
+WebDriver BiDi listening on ws://127.0.0.1:58954
+1671718616010	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3m/rx3d7q5d0nbdsfzq7tmpgznw0000gn/T/rust_mozprofile2ODKLJ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58954/devtools/browser/49555f24-0fd5-4733-a8a6-7a1f008cbd8f
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://consent.youtube.com."
+[2022-12-22T14:17:00Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:17:00Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:17:00Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:17:00Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+2022-12-22 14:17:00.614 plugin-container[17268:427950] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 14:17:00.614 plugin-container[17268:427950] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 14:17:00.618 plugin-container[17268:427950] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 14:17:00.618 plugin-container[17268:427950] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-12-22 14:17:00.618 plugin-container[17268:427954] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-12-22 14:17:00.618 plugin-container[17268:427954] nil host used in call to allowsAnyHTTPSCertificateForHost:
+[2022-12-22T14:17:12Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:17:12Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:17:12Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:17:12Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:15Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:15Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:15Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:15Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:18Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:18Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:18Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:18Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:22Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:22Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:22Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:22Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:29Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:29Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:29Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:19:29Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:20:14Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:20:14Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:20:14Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+[2022-12-22T14:20:14Z ERROR mp4parse] Found 2 nul bytes in "\0\0"
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

@@ -9,14 +9,16 @@ from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.firefox.options import Options
 from tqdm import tqdm
-from webdriver_manager.firefox import GeckoDriverManager
+
+path = '/Users/pauor506/Documents/CDHU/June2022:Dec2022/Pilots/Youtube_Katrin/Code/geckodriver'
+#browser = webdriver.Chrome(executable_path=path, options=options)  # Remember to download and use your own webdriver.
 
 
 def setup_driver():
 
     options = Options()
     options.headless = True
-    return webdriver.Firefox(options=options)
+    return webdriver.Firefox(options=options, executable_path=path)
 
 
 def parse_urls(channel_url: str, driver) -> List[str]:
@@ -82,7 +84,7 @@ def get_video_urls():
 
     urls_df = pd.DataFrame(results)
 
-    urls_df.to_csv("video_urls.csv")
+    #urls_df.to_csv("video_urls.csv")
 
 
 if __name__ == "__main__":
