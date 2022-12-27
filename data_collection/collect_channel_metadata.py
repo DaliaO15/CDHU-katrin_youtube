@@ -6,7 +6,6 @@ from datetime import datetime
 from typing import Union
 
 import pandas as pd
-from bs4 import BeautifulSoup
 from dateutil import parser
 from googleapiclient.discovery import build
 from selenium import webdriver
@@ -21,7 +20,7 @@ from tqdm import tqdm
 # Setup logging
 logging.basicConfig(
     handlers=[
-        logging.FileHandler(filename="logs/metadata.log", mode="a"),
+        logging.FileHandler(filename="logs/channel_metadata.log", mode="a"),
         logging.StreamHandler(),
     ],
     format="%(asctime)s | %(levelname)s: %(message)s",
@@ -40,7 +39,7 @@ def setup_driver():
 driver = setup_driver()
 
 # Setup Google API
-GOOGLE_API_KEY = "AIzaSyDf5gV7kqHmTsG5qnvG3cg6ZoPHuLD9xTY"
+GOOGLE_API_KEY = "FILL IN"
 youtube = build("youtube", "v3", developerKey=GOOGLE_API_KEY)
 
 
@@ -75,8 +74,9 @@ def get_channel_id(channel: str) -> Union[str, None]:
             EC.presence_of_element_located((By.XPATH, "/html/body/link[1]"))
         )
         return channel_id.get_attribute("href").split("/")[-1]
-    except TimeoutException:
+    except TimeoutException as e:
         logging.error(f"ID of channel {channel} could not be parsed")
+        logging.error(e)
 
 
 def parse_meta(channel: str) -> Union[ChannelMeta, None]:
@@ -122,11 +122,13 @@ def main():
         metadata_df.append(parse_meta(channel))
 
     metadata_df = pd.DataFrame([c for c in metadata_df if c is not None])
-    channel_df = channels_df.merge(metadata_df, on="channel")
-    fname = "data/channel_metadata.csv"
-    logging.info(f"Saving metadata of size {channel_df.shape} to {fname}")
+    channels_df = channels_df.merge(metadata_df, on="channel")
+    channels_df = channels_df[~channels_df.duplicated()]
 
-    channel_df.to_csv(fname, index=False)
+    fname = "data/channel_metadata.csv"
+    logging.info(f"Saving metadata of size {channels_df.shape} to {fname}")
+
+    channels_df.to_csv(fname, index=False)
 
 
 if __name__ == "__main__":
