@@ -1,9 +1,7 @@
 from pytube import YouTube
-from pytube import Channel
+from pytube import extract
 import pandas as pd
 import youtube_dl
-import os
-from pytube import extract
 import os
 import logging
 
