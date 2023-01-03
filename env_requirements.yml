@@ -1,9 +1,9 @@
 name: pilot_katrin
 
 dependencies:
-  - python = 3.9
+  - python=3.9
   - numpy
   - bs4
   - requests 
-  - pytube
-  - youtube_dl
+  - conda-forge::pytube
+  - conda-forge::youtube-dl
