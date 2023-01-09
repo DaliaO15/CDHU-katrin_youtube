@@ -24,24 +24,24 @@ def video_download_tube(youtube_video, url, path):
     # Download video
     stream.download(output_path = path, filename = video_id + '-' + str(itag) + '.mp4')
 
-def video_download_dl(url, path):
-    ydl_opts = {'outtmpl': path + '%(id)s-%(format_id)s.%(ext)s'}
+def video_download_dl(url, format, path):
+    ydl_opts = {'outtmpl': path + '%(id)s-%(format_id)s.%(ext)s', 'format':str(format)}
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download(['https://www.'+ url]) # Downloads the best format by default 
  
 def video_download(df,root_folder): # df must contain a column called url where the urls to the videos are stored
+                                    # and one more column that stores the itag for the best resolution provided by pytube
 
     for idx in range(0,df.shape[0]):
         
         # Access the video url from data frame
         video_url = df['url'].iloc[idx]
         channel_name = df['channel'].iloc[idx]
+        itag = df['itag'].iloc[idx]
+        len = df['length'].iloc[idx]
 
         # Create a folder for that channel
         channel_folder = root_folder + channel_name + '/'
-  
-        yt = YouTube(video_url)
-        len = yt.length
         
         # Create a new folder for the channel
         if os.path.exists(channel_folder):
@@ -53,9 +53,8 @@ def video_download(df,root_folder): # df must contain a column called url where 
         if len <= 600: 
             # Download the video here
             try:
-                video_download_tube(yt, video_url, channel_folder)
+                video_download_dl(video_url, itag, channel_folder)
             except:
-                #video_download_dl(video_url, channel_folder)
                 pass
         else:
             logging.info(f'The video {video_url} exceeded the time constrain. Length {len} seconds.')
