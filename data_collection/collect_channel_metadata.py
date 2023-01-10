@@ -14,7 +14,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
 from tqdm import tqdm
 
 # Setup logging
@@ -29,9 +29,15 @@ logging.basicConfig(
 
 
 def setup_driver():
-
     options = Options()
     options.headless = True
+    options.add_argument("start-maximized")
+    options.add_argument("disable-infobars")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-application-cache")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-dev-shm-usage")
     return webdriver.Firefox(options=options)
 
 
@@ -60,20 +66,23 @@ def get_channel_id(channel: str) -> Union[str, None]:
     Parses the id of a channel based on channel name.
     """
     driver.get(f"https://www.youtube.com/@{channel}")
-    time.sleep(1)
+    time.sleep(1.5)
 
     with contextlib.suppress(NoSuchElementException):
         driver.find_element(
             "xpath",
             "/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[1]/div/div/button/span",
         ).click()
-        time.sleep(1)
+        time.sleep(1.5)
 
     try:
-        channel_id = WebDriverWait(driver, 3).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/link[1]"))
+        return (
+            WebDriverWait(driver, 10)
+            .until(EC.presence_of_element_located((By.XPATH, "/html/body/link[1]")))
+            .get_attribute("href")
+            .split("/")[-1]
         )
-        return channel_id.get_attribute("href").split("/")[-1]
+
     except TimeoutException as e:
         logging.error(f"ID of channel {channel} could not be parsed")
         logging.error(e)
@@ -120,6 +129,8 @@ def main():
     for channel in pbar:
         pbar.set_description(f"Processing channel {channel}: ")
         metadata_df.append(parse_meta(channel))
+
+    driver.quit()
 
     metadata_df = pd.DataFrame([c for c in metadata_df if c is not None])
     channels_df = channels_df.merge(metadata_df, on="channel")
