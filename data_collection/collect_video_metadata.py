@@ -87,6 +87,7 @@ class VideoMeta:
     raiting: float
     channel: str
     url: str
+    best_itag: Union[int, None]
 
 
 def parse_metadata() -> None:
@@ -122,6 +123,9 @@ def parse_metadata() -> None:
                         raiting=yt.rating,
                         channel=channel.channel,
                         url=url,
+                        best_itag=yt.streams.filter(
+                            progressive=False
+                        ).get_highest_resolution(),
                     )
                 )
             except PytubeError as e:
