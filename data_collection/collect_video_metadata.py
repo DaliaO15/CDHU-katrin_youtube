@@ -132,11 +132,12 @@ def parse_metadata() -> None:
 
         if i == 0:
             pd.DataFrame(video_metadata).to_csv("data/videos_metadata.csv", index=False)
-            video_metadata = []
         else:
             pd.DataFrame(video_metadata).to_csv(
                 "data/videos_metadata.csv", mode="a", index=False, header=False
             )
+
+        video_metadata = []
 
 
 if __name__ == "__main__":
