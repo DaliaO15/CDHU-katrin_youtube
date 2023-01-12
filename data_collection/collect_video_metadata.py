@@ -1,4 +1,5 @@
 import contextlib
+import logging
 import time
 from dataclasses import dataclass
 from datetime import datetime
@@ -7,10 +8,21 @@ from typing import List, Union
 import pandas as pd
 from bs4 import BeautifulSoup
 from pytube import YouTube, extract
+from pytube.exceptions import PytubeError
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.firefox.options import Options
 from tqdm import tqdm
+
+# Setup logging
+logging.basicConfig(
+    handlers=[
+        logging.FileHandler(filename="logs/video_metadata.log", mode="a"),
+        logging.StreamHandler(),
+    ],
+    format="%(asctime)s | %(levelname)s: %(message)s",
+    level=logging.INFO,
+)
 
 
 def setup_driver():
@@ -77,46 +89,55 @@ class VideoMeta:
     url: str
 
 
-def parse_metadata():
+def parse_metadata() -> None:
 
     channels_df = pd.read_csv("data/channel_metadata.csv")
 
-    video_metadata = []
-
     pbar = tqdm(list(channels_df[["channel", "channel_url"]].itertuples()))
 
-    for channel in pbar:
+    for i, channel in enumerate(pbar):
 
         pbar.set_description(f"Processing {channel.channel}")
-
         pbar2 = tqdm(parse_urls(f"{channel.channel_url}/videos"))
+
+        video_metadata = []
 
         for url in pbar2:
 
-            yt = YouTube(url)
+            try:
+                yt = YouTube(url)
+                pbar2.set_description(f"Processing video {yt.title}")
 
-            pbar2.set_description(f"Processing video {yt.title}")
-
-            video_metadata.append(
-                VideoMeta(
-                    title=yt.title,
-                    id=extract.video_id(url),
-                    length=yt.length,
-                    views=yt.views,
-                    description=yt.description,
-                    keywords=yt.keywords,
-                    age_restricted=yt.age_restricted,
-                    author=yt.author,
-                    pub_date=yt.publish_date,
-                    raiting=yt.rating,
-                    channel=channel.channel,
-                    url=url,
+                video_metadata.append(
+                    VideoMeta(
+                        title=yt.title,
+                        id=extract.video_id(url),
+                        length=yt.length,
+                        views=yt.views,
+                        description=yt.description,
+                        keywords=yt.keywords,
+                        age_restricted=yt.age_restricted,
+                        author=yt.author,
+                        pub_date=yt.publish_date,
+                        raiting=yt.rating,
+                        channel=channel.channel,
+                        url=url,
+                    )
                 )
-            )
+            except PytubeError as e:
+                logging.error(
+                    f"Video with url: {url} from channel {channel.channel} could not be parsed"
+                )
+                logging.error(e)
 
-    return pd.DataFrame(video_metadata)
+        if i == 0:
+            pd.DataFrame(video_metadata).to_csv("data/videos_metadata.csv", index=False)
+            video_metadata = []
+        else:
+            pd.DataFrame(video_metadata).to_csv(
+                "data/videos_metadata.csv", mode="a", index=False, header=False
+            )
 
 
 if __name__ == "__main__":
     metadata_df = parse_metadata()
-    metadata_df.to_csv("data/videos_metadata.csv", index=False)
