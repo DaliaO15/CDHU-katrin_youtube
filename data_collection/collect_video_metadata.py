@@ -1,5 +1,7 @@
 import contextlib
 import logging
+import os
+import sys
 import time
 from dataclasses import dataclass
 from datetime import datetime
@@ -27,6 +29,9 @@ logging.basicConfig(
 
 
 def setup_driver():
+    # Allow properly quitting driver
+    profile = webdriver.FirefoxProfile()
+    profile.set_preference("dom.disable_beforeunload", True)
 
     options = Options()
     options.headless = True
@@ -37,7 +42,7 @@ def setup_driver():
     options.add_argument("--disable-application-cache")
     options.add_argument("--disable-gpu")
     options.add_argument("--disable-dev-shm-usage")
-    return webdriver.Firefox(options=options)
+    return webdriver.Firefox(options=options, firefox_profile=profile)
 
 
 driver = setup_driver()
@@ -162,4 +167,12 @@ def parse_metadata() -> None:
 
 
 if __name__ == "__main__":
-    metadata_df = parse_metadata()
+    try:
+        parse_metadata()
+        driver.close()
+    except KeyboardInterrupt:
+        driver.close()
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)
