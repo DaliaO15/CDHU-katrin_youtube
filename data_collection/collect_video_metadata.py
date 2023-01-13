@@ -54,20 +54,20 @@ def parse_urls(channel_url: str) -> List[str]:
             "/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[1]/div/div/button/span",
         ).click()
 
-    lastHeight = driver.execute_script("return document.documentElement.scrollHeight")
+    last_height = driver.execute_script("return document.documentElement.scrollHeight")
 
     while True:
 
-        driver.execute_script(f"window.scrollTo(0, {lastHeight});")
+        driver.execute_script(f"window.scrollTo(0, {last_height});")
         time.sleep(1)
-        newHeight = driver.execute_script(
+        new_height = driver.execute_script(
             "return document.documentElement.scrollHeight"
         )
 
-        if newHeight == lastHeight:
+        if new_height == last_height:
             break
 
-        lastHeight = newHeight
+        last_height = new_height
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
     return [
