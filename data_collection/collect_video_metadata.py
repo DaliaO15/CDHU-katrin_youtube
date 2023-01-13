@@ -38,6 +38,7 @@ def setup_driver():
     options.add_argument("--disable-extensions")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-application-cache")
+    options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("--disable-gpu")
     options.add_argument("--disable-dev-shm-usage")
     return webdriver.Firefox(options=options)
@@ -163,15 +164,17 @@ def parse_metadata() -> None:
 
         video_metadata = []
 
+def tear_down():
+    driver.stop_client()
+    driver.close()
+    driver.quit()
 
 if __name__ == "__main__":
     try:
         parse_metadata()
-        driver.close()
-        driver.quit()
+        tear_down()
     except KeyboardInterrupt:
-        driver.close()
-        driver.quit()
+        tear_down()
         try:
             sys.exit(0)
         except SystemExit:
