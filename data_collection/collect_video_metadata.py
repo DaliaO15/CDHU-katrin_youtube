@@ -3,6 +3,7 @@ import logging
 import time
 from dataclasses import dataclass
 from datetime import datetime
+from http.client import IncompleteRead
 from typing import List, Union
 
 import pandas as pd
@@ -88,6 +89,7 @@ class VideoMeta:
     channel: str
     url: str
     best_itag: Union[int, None]
+    video_only_itags: Union[List[int], None]
 
 
 def parse_metadata() -> None:
@@ -109,6 +111,11 @@ def parse_metadata() -> None:
                 yt = YouTube(url)
                 pbar2.set_description(f"Processing video {yt.title}")
 
+                best_itag = yt.streams.filter().get_highest_resolution()
+                video_only_itags = yt.streams.filter(
+                    only_video=True, file_extension="mp4"
+                )
+
                 video_metadata.append(
                     VideoMeta(
                         title=yt.title,
@@ -123,16 +130,19 @@ def parse_metadata() -> None:
                         raiting=yt.rating,
                         channel=channel.channel,
                         url=url,
-                        best_itag=yt.streams.filter(
-                            progressive=False
-                        ).get_highest_resolution(),
+                        best_itag=best_itag.itag if best_itag else None,
+                        video_only_itags=(
+                            [t.itag for t in video_only_itags]
+                            if video_only_itags
+                            else None
+                        ),
                     )
                 )
-            except PytubeError as e:
+            except (IncompleteRead, PytubeError) as e:
                 logging.error(
                     f"Video with url: {url} from channel {channel.channel} could not be parsed"
                 )
-                logging.error(e)
+                logging.error(f"Error: {e}")
 
         if i == 0:
             pd.DataFrame(video_metadata).to_csv("data/videos_metadata.csv", index=False)
