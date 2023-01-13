@@ -30,11 +30,9 @@ logging.basicConfig(
 
 def setup_driver():
     # Allow properly quitting driver
-    profile = webdriver.FirefoxProfile()
-    profile.set_preference("dom.disable_beforeunload", True)
-
     options = Options()
     options.headless = True
+    options.set_preference("dom.disable_beforeunload", True)
     options.add_argument("start-maximized")
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
@@ -42,7 +40,7 @@ def setup_driver():
     options.add_argument("--disable-application-cache")
     options.add_argument("--disable-gpu")
     options.add_argument("--disable-dev-shm-usage")
-    return webdriver.Firefox(options=options, firefox_profile=profile)
+    return webdriver.Firefox(options=options)
 
 
 driver = setup_driver()
@@ -170,8 +168,10 @@ if __name__ == "__main__":
     try:
         parse_metadata()
         driver.close()
+        driver.quit()
     except KeyboardInterrupt:
         driver.close()
+        driver.quit()
         try:
             sys.exit(0)
         except SystemExit:
