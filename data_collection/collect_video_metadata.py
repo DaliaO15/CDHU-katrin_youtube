@@ -17,6 +17,9 @@ from selenium.common import NoSuchElementException
 from selenium.webdriver.firefox.options import Options
 from tqdm import tqdm
 
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
 # Setup logging
 logging.basicConfig(
     handlers=[
@@ -149,7 +152,8 @@ def parse_metadata() -> None:
                         ),
                     )
                 )
-            except (IncompleteRead, PytubeError) as e:
+            #except (IncompleteRead, PytubeError) as e:
+            except Exception as e:
                 logging.error(
                     f"Video with url: {url} from channel {channel.channel} could not be parsed"
                 )
