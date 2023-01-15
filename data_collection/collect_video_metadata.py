@@ -17,8 +17,8 @@ from selenium.common import NoSuchElementException
 from selenium.webdriver.firefox.options import Options
 from tqdm import tqdm
 
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
+#import ssl
+#ssl._create_default_https_context = ssl._create_unverified_context
 
 # Setup logging
 logging.basicConfig(
@@ -102,8 +102,8 @@ class VideoMeta:
     raiting: float
     channel: str
     url: str
-    best_itag: Union[int, None]
-    video_only_itags: Union[List[int], None]
+#    best_itag: Union[int, None]
+#    video_only_itags: Union[List[int], None]
 
 
 def parse_metadata() -> None:
@@ -125,10 +125,10 @@ def parse_metadata() -> None:
                 yt = YouTube(url)
                 pbar2.set_description(f"Processing video {yt.title}")
 
-                best_itag = yt.streams.filter().get_highest_resolution()
-                video_only_itags = yt.streams.filter(
-                    only_video=True, file_extension="mp4"
-                )
+                # best_itag = yt.streams.filter().get_highest_resolution()
+                # video_only_itags = yt.streams.filter(
+                #     only_video=True, file_extension="mp4"
+                # )
 
                 video_metadata.append(
                     VideoMeta(
@@ -144,15 +144,15 @@ def parse_metadata() -> None:
                         raiting=yt.rating,
                         channel=channel.channel,
                         url=url,
-                        best_itag=best_itag.itag if best_itag else None,
-                        video_only_itags=(
-                            [t.itag for t in video_only_itags]
-                            if video_only_itags
-                            else None
-                        ),
+                        # best_itag=best_itag.itag if best_itag else None,
+                        # video_only_itags=(
+                        #     [t.itag for t in video_only_itags]
+                        #     if video_only_itags
+                        #     else None
+                        # ),
                     )
                 )
-            #except (IncompleteRead, PytubeError) as e:
+            # except (IncompleteRead, PytubeError) as e:
             except Exception as e:
                 logging.error(
                     f"Video with url: {url} from channel {channel.channel} could not be parsed"
