@@ -1,10 +1,13 @@
 data_collection/data/videos
 Data_collection/data/videos_metadata_FULL.csv
 __pycache__/
-.ipynb_checkpoints
+**/.ipynb_checkpoints
 **/.DS_Store
 youtube_venv
 *.log
 
 /prototyping/video_urls_FUll.csv
 /prototyping/Videos
+prototyping/videos_metadata_TEST.csv
+prototyping/OYS2pt9DVsY-136.mp4
+.DS_Store

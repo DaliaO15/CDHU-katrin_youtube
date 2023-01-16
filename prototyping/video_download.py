@@ -7,17 +7,6 @@ logging.basicConfig(level=logging.DEBUG, filename='../Data_collection/data/logs/
                     format='%(asctime)s : %(levelname)s : %(message)s',
                     datefmt='%d-%b-%y %H:%M:%S')
 
-
-def create_folder(folder):
-    try: # if it is possible to create the folder
-        os.mkdir(folder)
-    except: # if the folder was not created successfuly, raise a warning
-        logging.info('There is an error with the folder')
-
-logging.basicConfig(level=logging.DEBUG, filename='video_download.log', 
-                    format='%(asctime)s : %(levelname)s : %(message)s',
-                    datefmt='%d-%b-%y %H:%M:%S')
-
 def create_folder(folder):
     try: # if it is possible to create the folder
         os.mkdir(folder)
