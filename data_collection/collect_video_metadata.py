@@ -18,8 +18,8 @@ from selenium.common import NoSuchElementException
 from selenium.webdriver.firefox.options import Options
 from tqdm import tqdm
 
-# import ssl
-# ssl._create_default_https_context = ssl._create_unverified_context
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 # Setup logging
 logging.basicConfig(
