@@ -33,9 +33,10 @@ def video_download(df, root_folder:str, col1:str, col2:str): # df must contain a
         channel_name = df['channel'].iloc[idx].replace(" ", "_")
         len = df['length_in_secs'].iloc[idx]
 
-        itag = df[col1].iloc[idx]# df[col2].iloc[idx][0] column with lits 
+        itag = df[col1].iloc[idx]# df[col2].iloc[idx][0] column with lists 
         if itag == None: 
             itag = int(df[col2].iloc[idx])
+
         # Create a folder for that channel
         channel_folder = root_folder + channel_name + '/'
         
@@ -56,7 +57,7 @@ def video_download(df, root_folder:str, col1:str, col2:str): # df must contain a
                 )
                 logging.error(f"Error: {e}")
         else:
-            logging.info(f'The video {video_url} exceeded the time constrain. Length {len} seconds.')
+            logging.info(f'Video {video_url} from channel {channel_name} exceeded the time constrain. Length {len} seconds.')
        
         if idx > 3:
             break      
