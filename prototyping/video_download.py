@@ -1,8 +1,6 @@
-from pytube import YouTube
-from pytube import extract
 import pandas as pd
-import youtube_dl
 import os
+from yt_dlp import YoutubeDL
 import logging
 
 logging.basicConfig(level=logging.DEBUG, filename='../Data_collection/data/logs/video_download.log', 
@@ -16,57 +14,58 @@ def create_folder(folder):
     except: # if the folder was not created successfuly, raise a warning
         logging.info('There is an error with the folder')
 
-def video_download_tube(youtube_video, url, path):
-    # Create a youtube object to use the API
-    video_id = extract.video_id(url)
-    itag = youtube_video.streams.filter(only_video=True).asc().first().itag # get the highest resolution possible 
-    stream = youtube_video.streams.get_by_itag(itag)
-    # Download video
-    stream.download(output_path = path, filename = video_id + '-' + str(itag) + '.mp4')
+logging.basicConfig(level=logging.DEBUG, filename='video_download.log', 
+                    format='%(asctime)s : %(levelname)s : %(message)s',
+                    datefmt='%d-%b-%y %H:%M:%S')
 
-def video_download_dl(url, format, path):
-    ydl_opts = {'outtmpl': path + '%(id)s-%(format_id)s.%(ext)s', 'format':str(format)}
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download(['https://www.'+ url]) # Downloads the best format by default 
- 
-def video_download(df,root_folder): # df must contain a column called url where the urls to the videos are stored
-                                    # and one more column that stores the itag for the best resolution provided by pytube
+def create_folder(folder):
+    try: # if it is possible to create the folder
+        os.mkdir(folder)
+    except: # if the folder was not created successfuly, raise a warning
+        logging.info('There is an error with the folder')
+
+def video_download(df, root_folder:str): 
+    # df: metadata. df must contain a column called url where the urls to the videos are stored
+    # root_folder: folder where videos are stored
 
     for idx in range(0,df.shape[0]):
-        
+
         # Access the video url from data frame
-        video_url = df['url'].iloc[idx]
-        channel_name = df['channel'].iloc[idx]
-        itag = df['itag'].iloc[idx]
+        video_url = 'https://www.' + df['url'].iloc[idx]
+        channel_name = df['channel'].iloc[idx].replace(" ", "_")
         len = df['length'].iloc[idx]
 
         # Create a folder for that channel
         channel_folder = root_folder + channel_name + '/'
         
         # Create a new folder for the channel
-        if os.path.exists(channel_folder):
-            pass
-        else:
+        if not os.path.exists(channel_folder):
             create_folder(channel_folder)
 
-        # Get videos with less than 10 min length
-        if len <= 600: 
-            # Download the video here
+        ydl_opts = {'outtmpl': channel_folder + '%(id)s-%(format_id)s.%(ext)s',
+                    'format': 'bestvideo[ext=mp4]/mp4',
+                    'overwrites': False,
+                    'retries': 15,
+                    'concurrent-fragments':8}
+        
+        if len <= 600:
             try:
-                video_download_dl(video_url, itag, channel_folder)
-            except:
-                pass
+                with YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([video_url]) # Downloads the best format by default 
+            #except:
+            #    logging.info(f'Error when downloading video {video_url}')
+
+            except Exception as e:
+                logging.error(f'Error when downloading video {video_url} in channel {channel_name}')
+                logging.error(f"Error: {e}")
         else:
             logging.info(f'The video {video_url} exceeded the time constrain. Length {len} seconds.')
-       
 
 def main():
-    file_test = 'video_urls_FULL.csv'
-    root = '../Data_collection/data/videos/'
-    df = pd.read_csv(file_test)
-    df = df.drop(columns = 'Unnamed: 0')
-    df = df[255:265].reset_index(drop= True)
-    video_download(df,root) 
+    file_test = '../Data_collection/data/videos_metadata.csv'
+    df = pd.read_csv(file_test,lineterminator='\n')
+    df = df.sample(frac = 0.01, random_state=495)
+    video_download(df, root_folder='Videos/') 
 
 if __name__ == "__main__":
     main()
