@@ -35,7 +35,7 @@ def video_download(df, root_folder:str):
                     'format': 'bestvideo[ext=mp4]/mp4',
                     'overwrites': False,
                     'retries': 15,
-                    'concurrent-fragments':8}
+                    'concurrent-fragments':12}
         
         if len <= 600:
             try:
@@ -53,9 +53,8 @@ def video_download(df, root_folder:str):
             logging.info(f'We are in index {idx}')
 
 def main():
-    file_test = '../data_collection/data/videos_metadata.csv'
-    df = pd.read_csv(file_test,lineterminator='\n')
-    df = df.sample(frac = 0.01, random_state=495)
+    df = pd.read_parquet('../Data_collection/data/videos_metadata.parquet')
+    df = df.sample(frac = 0.001, random_state=495)
     video_download(df, root_folder='Videos/') 
 
 if __name__ == "__main__":
