@@ -1,4 +1,5 @@
 data_collection/data/videos
+data_collection/geckodriver
 Data_collection/data/videos_metadata_FULL.csv
 __pycache__/
 **/.ipynb_checkpoints
