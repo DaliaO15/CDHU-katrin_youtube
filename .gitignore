@@ -1,5 +1,5 @@
-data_collection/
-Data_collection/
+data_collection/data/videos
+Data_collection/data/videos_metadata_FULL.csv
 __pycache__/
 **/.ipynb_checkpoints
 **/.DS_Store
