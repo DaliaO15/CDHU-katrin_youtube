@@ -3,7 +3,7 @@ import os
 from yt_dlp import YoutubeDL
 import logging
 
-logging.basicConfig(level=logging.DEBUG, filename='../Data_collection/data/logs/video_download.log', 
+logging.basicConfig(level=logging.DEBUG, filename='video_download.log', 
                     format='%(asctime)s : %(levelname)s : %(message)s',
                     datefmt='%d-%b-%y %H:%M:%S')
 
@@ -51,7 +51,7 @@ def video_download(df, root_folder:str):
             logging.info(f'The video {video_url} exceeded the time constrain. Length {len} seconds.')
 
 def main():
-    file_test = '../Data_collection/data/videos_metadata.csv'
+    file_test = '../data_collection/data/videos_metadata.csv'
     df = pd.read_csv(file_test,lineterminator='\n')
     df = df.sample(frac = 0.01, random_state=495)
     video_download(df, root_folder='Videos/') 
