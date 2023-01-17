@@ -1,0 +1,40 @@
+30-Dec-22 20:31:45 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:46 : INFO : El sector se une en defensa del aceite de oliva
+30-Dec-22 20:31:46 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:46 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:46 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:46 : INFO : Reunión MARM-OPAs medidas de apoyo a la ganadería
+30-Dec-22 20:31:46 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:47 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:47 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:47 : INFO : FADEMUR - 8 de marzo, día de la mujer trabajadora 2011
+30-Dec-22 20:31:47 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:47 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:47 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:48 : INFO : Reunión en el MARM para analizar la crisis ganadera
+30-Dec-22 20:31:48 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:48 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:48 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:48 : INFO : Fademur Catalunya 2011
+30-Dec-22 20:31:48 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:49 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:49 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:49 : INFO : Dacian Ciolos saluda a la Unión de Pequeños Agricultores y Ganaderos (UPA)
+30-Dec-22 20:31:49 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:49 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:49 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:50 : INFO : El sistema educativo público está desbordado por falta de financiación.
+30-Dec-22 20:31:50 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:50 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:50 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:50 : INFO : CSIF exige más medios para un Sanidad en declive
+30-Dec-22 20:31:50 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:51 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:51 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:51 : INFO : CSIF defiende el acceso a la nueva promoción interna y retener así el talento en la AGE
+30-Dec-22 20:31:51 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:51 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
+30-Dec-22 20:31:51 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:52 : INFO : CSIF exige más medios para un Sanidad en declive
+30-Dec-22 20:31:52 : DEBUG : matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+30-Dec-22 20:31:52 : DEBUG : matched regex search: (?<=itemprop=\"datePublished\" content=\")\d{4}-\d{2}-\d{2}
