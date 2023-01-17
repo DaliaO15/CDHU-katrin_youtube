@@ -46,9 +46,11 @@ def video_download(df, root_folder:str):
 
             except Exception as e:
                 logging.error(f'Error when downloading video {video_url} in channel {channel_name}')
+                logging.error(f'We are in index {idx}')
                 logging.error(f"Error: {e}")
         else:
             logging.info(f'The video {video_url} exceeded the time constrain. Length {len} seconds.')
+            logging.info(f'We are in index {idx}')
 
 def main():
     file_test = '../data_collection/data/videos_metadata.csv'
