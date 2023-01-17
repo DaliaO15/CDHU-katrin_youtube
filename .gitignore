@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 data_collection/
 Data_collection/
+=======
+data_collection/data/videos
+data_collection/geckodriver
+Data_collection/data/videos_metadata_FULL.csv
+>>>>>>> 3b5a45a29a7eb2c066a881f55607264cdf7aa0e3
 __pycache__/
 **/.ipynb_checkpoints
 **/.DS_Store
