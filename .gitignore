@@ -1,5 +1,5 @@
 data_collection/data
-Data_collection/data/videos_metadata_FULL.csv
+Data_collection/data
 **/.ipynb_checkpoints
 **/.DS_Store
 youtube_venv
@@ -7,3 +7,4 @@ youtube_venv
 /prototyping/Videos
 .DS_Store
 /prototyping/Videos_test
+data_collection/data
