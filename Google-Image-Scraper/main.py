@@ -28,13 +28,9 @@ if __name__ == "__main__":
     image_path = '../data_collection/data/logos_imgs'
 
     #Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
-    search_keys = list(set(["cat"]))
- #   search_keys = ['List Di Pietro/ Italia dei Valori','Azione','Nuovo Centrodestra','Südtiroler Volksparte',
- #'Il Popolo della Libertà','Sosialistisk Venstreparti','Kristelig Folkeparti','Arbeidarpartiet',
- #'Miljøpartiet de Grønne', 'Venstre','Más País-Equo','Partido Popular',
- #'Esquerra Republicana de Catalunya–Catalunya Sí', 'Vox','Partido Nacionalista Vasco — Euzko Alderdi Jeltzalea',
- #'Feministiskt initiativ','Sveriges socialdemokratiska arbetareparti','Kristdemokraterna',
- #'Centerpartiet','Vänsterpartiet ']
+    #search_keys = list(set(["cat"]))
+    search_keys = ['List Di Pietro/ Italia dei Valori', "Noi con l'Italia", 'Miljopartiet de Gronne', 'Sosialistisk Venstreparti',
+ 'Convergència Democràtica de Catalunya','Partido Popular', 'Vänsterpartiet','Feministiskt initiativ']
 
     #Parameters
     number_of_images = 5                # Desired number of images
