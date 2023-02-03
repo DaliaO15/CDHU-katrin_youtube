@@ -34,6 +34,7 @@ if __name__ == "__main__":
  'Moderata samlingspartiet party Sweden',
  'Sveriges socialdemokratiska arbetareparti party Sweden',
  'Høyre party Norway',
+ 'Arbeiderpartiet party Norway',
  'Partito Democratico party Italy',
  'Forza Italia party Italy']
 
