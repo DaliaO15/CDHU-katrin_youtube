@@ -29,8 +29,14 @@ if __name__ == "__main__":
 
     #Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
     #search_keys = list(set(["cat"]))
-    search_keys = ['List Di Pietro/ Italia dei Valori', "Noi con l'Italia", 'Miljopartiet de Gronne', 'Sosialistisk Venstreparti',
- 'Convergència Democràtica de Catalunya','Partido Popular', 'Vänsterpartiet','Feministiskt initiativ']
+    search_keys = ['List Di Pietro/ Italia dei Valori party Italy',
+ "Noi con l'Italia party Italy",
+ 'Miljøpartiet de Grønne party Norway',
+ 'Sosialistisk Venstreparti party Norway',
+ 'Convergència Democràtica de Catalunya party Spain',
+ 'Partido Popular party Spain',
+ 'Vänsterpartiet  party Sweden',
+ 'Feministiskt initiativ party Sweden']
 
     #Parameters
     number_of_images = 5                # Desired number of images
