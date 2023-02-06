@@ -29,14 +29,14 @@ if __name__ == "__main__":
 
     #Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
     #search_keys = list(set(["cat"]))
-    search_keys = ['Partido Popular party Spain',
- 'Partido Socialista Obrero Español party Spain',
- 'Moderata samlingspartiet party Sweden',
- 'Sveriges socialdemokratiska arbetareparti party Sweden',
- 'Høyre party Norway',
- 'Arbeiderpartiet party Norway',
- 'Partito Democratico party Italy',
- 'Forza Italia party Italy']
+    search_keys = ['Partido Popular Spain advertisement',
+ 'Partido Socialista Obrero Español Spain advertisement',
+ 'Moderata samlingspartiet Sweden advertisement',
+ 'Sveriges socialdemokratiska arbetareparti Sweden advertisement',
+ 'Høyre Norway advertisement',
+ 'Arbeiderpartiet Norway advertisement',
+ 'Partito Democratico Italy advertisement',
+ 'Forza Italia Italy advertisement']
 
     #Parameters
     number_of_images = 200                # Desired number of images
