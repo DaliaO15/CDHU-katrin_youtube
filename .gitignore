@@ -1,13 +1,12 @@
-data_collection/data
-Data_collection/data
+data_collection/data/logos_imgs
+data_collection/data/Videos
+#Data_collection/data/
+
 **/.ipynb_checkpoints
 **/.DS_Store
+.DS_Store
 youtube_venv
 
 /prototyping/Videos
-.DS_Store
 /prototyping/Videos_test
-data_collection/data
-.DS_Store
-.DS_Store
-data_collection/data/logos_imgs
+/prototyping/logos/Images_logos
