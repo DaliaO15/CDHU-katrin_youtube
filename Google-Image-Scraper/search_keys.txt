@@ -1,0 +1,33 @@
+España Izquierda unida partido propaganda
+España Izquierda unida partido conferencia
+España Izquierda unida partido periódico
+Italia Partito del comunisti italiani
+Italia Partito del comunisti italiani campagna
+Italia Partito del comunisti italiani propaganda
+Italia Partito del comunisti italiani conferenza
+Italia Partito del comunisti italiani giornale
+Italia Forza Italia Partito 
+Italia Forza Italia Partito campagna
+Italia Forza Italia Partito propaganda
+Italia Forza Italia Partito conferenza
+Italia Forza Italia Partito giornale
+Norge Arbeiderpartiet
+Norge Arbeiderpartiet kampanje
+Norge Arbeiderpartiet reklame
+Norge Arbeiderpartiet konferanse
+Norge Arbeiderpartiet avis
+Norge Høyre
+Norge Høyre kampanje
+Norge Høyre reklame
+Norge Høyre konferanse
+Norge Høyre avis
+Sverige socialdemokraterna
+Sverige socialdemokraterna kampanj
+Sverige socialdemokraterna reklam
+Sverige socialdemokraterna konferens
+Sverige Ssocialdemokraterna tidning
+Sverige Sverigedemokraterna
+Sverige Sverigedemokraterna kampanj
+Sverige Sverigedemokraterna reklam
+Sverige Sverigedemokraterna konferens
+Sverige Sverigedemokraterna tidning
