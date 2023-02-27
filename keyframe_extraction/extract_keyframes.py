@@ -9,19 +9,19 @@ from multiprocessing import Pool
 import math
 import logging
 import argparse
-from sklearn.exceptions import FutureWarning
-import warnings
+from warnings import simplefilter
+
 
 # Ignore FutureWarnings from sklearn
-warnings.filters(action = "ignore", category = FutureWarning)
+simplefilter(action = "ignore", category = FutureWarning)
 
 # Read metadata
 meta_df = pd.read_csv(
-    "/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/CDHU-katrin_youtube_dalia/data_collection/data/final_videos_metadata.csv",
+    "/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/CDHU-katrin_youtube_dalia/CDHU-katrin_youtube/data_collection/data/final_videos_metadata.csv",
     lineterminator="\n",
     index_col=0,
 )
-channel_df = pd.read_csv("/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/CDHU-katrin_youtube_dalia/data_collection/data/channel_metadata.csv")
+channel_df = pd.read_csv("/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/CDHU-katrin_youtube_dalia/CDHU-katrin_youtube/data_collection/data/channel_metadata.csv")
 
 errors = defaultdict(list)
 
@@ -55,7 +55,7 @@ def extract_keyframes(video_path: str, output_dir: str) -> None:
     # 10 frames per minute
     video_id = output_dir.split("/")[-1]
     l = meta_df.loc[meta_df["id"] == video_id, "length"]
-    n_frames = max(10, math.ceil((l / 60) * 10))
+    n_frames = min(10, math.ceil((l / 60) * 10))
     try:
         vd.extract_video_keyframes(
             no_of_frames=n_frames, file_path=str(video_path), writer=diskwriter
