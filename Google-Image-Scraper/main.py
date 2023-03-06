@@ -24,22 +24,17 @@ def worker_thread(search_key):
 if __name__ == "__main__":
     #Define file path
     webdriver_path = os.path.normpath(os.path.join(os.getcwd(), 'webdriver', webdriver_executable()))
-    #image_path = os.path.normpath(os.path.join(os.getcwd(), 'photos'))
     image_path = '../data_collection/data/logos_imgs'
 
     #Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
     #search_keys = list(set(["cat"]))
-    search_keys = ['Partido Popular Spain advertisement',
- 'Partido Socialista Obrero Español Spain advertisement',
- 'Moderata samlingspartiet Sweden advertisement',
- 'Sveriges socialdemokratiska arbetareparti Sweden advertisement',
- 'Høyre Norway advertisement',
- 'Arbeiderpartiet Norway advertisement',
- 'Partito Democratico Italy advertisement',
- 'Forza Italia Italy advertisement']
+
+    file_search_keys = open('search_keys.txt', 'r')
+    search_keys = file_search_keys.read().split('\n')
+    file_search_keys.close()
 
     #Parameters
-    number_of_images = 200                # Desired number of images
+    number_of_images = 100                # Desired number of images
     headless = True                     # True = No Chrome GUI
     min_resolution = (0, 0)             # Minimum desired image resolution
     max_resolution = (9999, 9999)       # Maximum desired image resolution
