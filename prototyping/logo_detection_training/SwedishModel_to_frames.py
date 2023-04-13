@@ -1,4 +1,4 @@
-%cd /zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/CDHU-katrin_youtube_dalia/yolov5 
+#%cd /zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/CDHU-katrin_youtube_dalia/yolov5 
 
 import torch
 import utils
@@ -13,22 +13,17 @@ import os
 import glob as glob
 import requests
 import cv2
+import subprocess
 
-%matplotlib inline
+#%matplotlib inline
 
 
 def run_detection(model_path:str, test_data_path:str, project_name:str, test_name:str):
-    #model_path = f'Sverige/{model_name}/weights/best.pt'
-    #test_folder_path = f'{model_name}_TEST_{test_name}'
-    
-    !python detect.py \
-    --weights {model_path} \
-    --source {test_data_path} \
-    --project {project_name} \
-    --name {test_name} \
-    --save-txt \
-    --save-conf \
-    --nosave
+    # Create comand to run 
+    comand = ['python', 'detect.py', '--weights', model_path, '--source', test_data_path, '--project', project_name, '--name', test_name, '--save-txt', '--save-conf', '--nosave']
+    # Run
+    subprocess.run(comand)
+
     
 def run_detection_directory(model_path:str, test_data_dir:str):
     # Access the channel folder 
@@ -46,9 +41,15 @@ def run_detection_directory(model_path:str, test_data_dir:str):
             
             
 def main():
-    # Set relevatn paths
+    # Set relevant paths
     test_swe_path = '/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/youtube_video_frames/sweden/'
+    #test_swe_path = '/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/swedish_test_data/sweden'
     swe_model_path = 'Sverige/lr0.01_b32_e100_f12_V5M6/weights/best.pt'
 
     # Run detection 
+    print('Running detections')
+    run_detection_directory(swe_model_path, test_swe_path)
+    
+if __name__ == "__main__":
+    main()
     run_detection_directory(swe_model_path, test_swe_path)
