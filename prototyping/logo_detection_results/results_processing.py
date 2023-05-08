@@ -43,10 +43,11 @@ def result_processing(path_to_results_dir:str, path_to_res_file:str, country:str
             
     return file_path 
 
-
-def transf_parque(parque_file_path:str):
+    
+def transf_parque(parque_file_path:str, class_0_name:str, class_1_name:str):
     res = pd.read_parquet(parque_file_path, engine='fastparquet')
-    res
+    mapping = {'1': class_1_name, '0': class_0_name}
+    res = res.replace({'class_label': mapping})
     # Converting to CSV
     res.to_csv(parque_file_path.split('.par')[0]+'.csv', index = False)
     
@@ -54,14 +55,13 @@ def transf_parque(parque_file_path:str):
 def main():
     
     # Set folders 
-    main_folder = '../../../yolov5/Sweden_analysis'
-    #main_folder = '../../../yolov5/Sweden_analysis_TEST'
+    main_folder = '../../../yolov5/Spain_analysis'
     end_results_folder = '../../data_collection/data/'
-    country = 'sweden'
+    country = 'spain'
     
     # Process results 
     res = result_processing(main_folder, end_results_folder, country)
-    transf_parque(res)
+    transf_parque(res,'e_iu', 'e_pp')
     print('*****DONE*****')
 
 if __name__ == "__main__":
