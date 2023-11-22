@@ -34,7 +34,6 @@ def modified_resnet50():
     return model
 
 def model_load():
-
     # Load the modified ResNet-50 model
     model = modified_resnet50()
 
@@ -82,11 +81,12 @@ def protest_inference(model, path_to_img:str):
     return output_list
 
 def run_detection_directory(path_to_res_file:str, country:str, test_data_dir: str):
-    c = 0
-    f = 0
     
     # Set up model 
     model = model_load()
+    
+    # Set frame counter
+    frame_counter = 0
     
     # File to store the results (parqur file)
     file_path = path_to_res_file+f'results_{country}.parquet'
@@ -94,61 +94,50 @@ def run_detection_directory(path_to_res_file:str, country:str, test_data_dir: st
     # Access the channel folder 
     channel_dirs = [filename for filename in os.listdir(test_data_dir) if not filename.startswith('.')]
     
+    
     for channel_d in channel_dirs: # Get each channel 
         channel_name = channel_d
-        
+
         sub_folder_path = os.path.join(test_data_dir, channel_d)
-        
+
         # Access the video's frames folder 
         videos_dir = [filename for filename in os.listdir(sub_folder_path) if not filename.startswith('.')]
-        
+
         for video_d in videos_dir:
             video_name = video_d
-            
+
             video_path = os.path.join(sub_folder_path, video_d)
-            
+
             frames = [f for f in os.listdir(video_path) if not f.startswith('.')] # Get the frames 
-            
+
             for frame in frames:
                 frame_path = os.path.join(video_path, frame)
-                
+
                 output_list = protest_inference(model, frame_path)
-                
+
                 # Extract country, channel name, video, and frame from the file path
                 parts = frame_path.split('/')
                 channel_name = parts[-3]
                 video_name = parts[-2]
                 frame_name = parts[-1]
-                
-                # Append the data to the list
-                #data.append([channel_name, video_name, frame_name] + output_list)
-            
+                frame_counter += 1
+
                 # Write the labels to a data frame
-                aux = [channel_name, video_name, frame_name] + output_list
-                data = [aux]
-                df = pd.DataFrame(data, columns=['Channel', 'Video', 'Frame', "protest", "violence", "sign", "photo", "fire", "police", "children", "group_20", "group_100", "flag", "night", "shouting"])
-                       
+                data = [channel_name, video_name, frame_name] + output_list
+                df = pd.DataFrame([data], columns=['Channel', 'Video', 'Frame', "protest", "violence", "sign", "photo", "fire", "police", "children", "group_20", "group_100", "flag", "night", "shouting"])
+
                 # If the file does not exists, create it
                 if not os.path.isfile(file_path): 
                     write(file_path, df)
                 else: # Otherwise, write on it
                     write(file_path, df, append=True)
-                
-                f+=1
-                if f>1:
-                    break
-            
-            c +=1
-            if c>1:
-                break
+                        
                     
-    
-    #return file_path
 
             
 def main():
     # Set relevant paths
-    country = 'sweden'
+    country = 'italy'
     test_swe_path = f'/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/youtube_video_frames/{country}/'
     res_path = '/zpool/beast-mirror/labour-movements-mobilisation-via-visual-means/protest_derection_results/'
     
